@@ -18,8 +18,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from builds.views import vehicle_list, vehicle_detail
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', vehicle_list, name='vehicle_list'),
+    path("admin/", admin.site.urls),
+    path("", vehicle_list, name="vehicle_list"),
+    path("vehicles/<int:pk>/", vehicle_detail, name="vehicle_detail"),
 ]

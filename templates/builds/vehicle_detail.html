@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ vehicle.make }} {{ vehicle.model }} – Details</title>
+</head>
+<body>
+    <h1>{{ vehicle.make }} {{ vehicle.model }}</h1>
+    <p><strong>Owner:</strong> {{ vehicle.customer.first_name }} {{ vehicle.customer.last_name }}</p>
+    <p><strong>Build ID:</strong> {{ vehicle.vin_or_id }}</p>
+    <p><strong>Status:</strong> {{ vehicle.get_status_display }}</p>
+
+    <h2>Build Stages</h2>
+    {% if stages %}
+        <ol>
+            {% for stage in stages %}
+                <li>
+                    <strong>{{ stage.name }}</strong> – {{ stage.get_status_display }}
+                    {% if stage.due_date %}
+                        (Due: {{ stage.due_date }})
+                    {% endif %}
+                    {% if stage.description %}
+                        <br>{{ stage.description }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>No stages defined for this vehicle yet.</p>
+    {% endif %}
+
+    <p><a href="{% url 'vehicle_list' %}">Back to all vehicles</a></p>
+</body>
+</html>

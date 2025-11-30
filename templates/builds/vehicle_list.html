@@ -10,7 +10,9 @@
         <ul>
             {% for vehicle in vehicles %}
                 <li>
-                    {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})
+                    <a href="{% url 'vehicle_detail' vehicle.pk %}">
+                        {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})
+                    </a>
                     - Owned by: {{ vehicle.customer.first_name }} {{ vehicle.customer.last_name }}
                 </li>
             {% endfor %}
