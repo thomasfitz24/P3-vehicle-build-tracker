@@ -1,3 +1,4 @@
+from builds.views import vehicle_list, vehicle_detail, vehicle_create
 from builds.views import vehicle_list
 """
 URL configuration for tracker project.
@@ -24,4 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", vehicle_list, name="vehicle_list"),
     path("vehicles/<int:pk>/", vehicle_detail, name="vehicle_detail"),
+    path("vehicles/add/", vehicle_create, name="vehicle_create"),
 ]

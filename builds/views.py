@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Vehicle
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import VehicleForm
 
 
 def vehicle_list(request):
@@ -15,3 +15,15 @@ def vehicle_detail(request, pk):
         "stages": stages,
     }
     return render(request, "builds/vehicle_detail.html", context)
+
+def vehicle_create(request):
+    if request.method == "POST":
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("vehicle_list")
+    else:
+        form = VehicleForm()
+
+    return render(request, "builds/vehicle_form.html", {"form": form, "title": "Add Vehicle"})
+
