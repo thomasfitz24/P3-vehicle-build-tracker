@@ -1,3 +1,4 @@
+from builds.views import vehicle_list
 """
 URL configuration for tracker project.
 
@@ -19,5 +20,6 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('', vehicle_list, name='vehicle_list'),
 ]
