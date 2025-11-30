@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle List</title>
+</head>
+<body>
+    <h1>Vehicle List</h1>
+
+    {% if vehicles %}
+        <ul>
+            {% for vehicle in vehicles %}
+                <li>
+                    {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})
+                    - Owned by: {{ vehicle.customer.first_name }} {{ vehicle.customer.last_name }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No vehicles found.</p>
+    {% endif %}
+</body>
+</html>
