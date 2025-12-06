@@ -6,10 +6,14 @@
 <body>
     <h1>Vehicle List</h1>
 
+    <!-- Link to add a new vehicle -->
+    <p>
+        <a href="{% url 'vehicle_create' %}">Add New Vehicle</a>
+    </p>
+
     {% if vehicles %}
         <ul>
             {% for vehicle in vehicles %}
-             <p><a href="{% url 'vehicle_create' %}">Add New Vehicle</a></p>
                 <li>
                     <a href="{% url 'vehicle_detail' vehicle.pk %}">
                         {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})
