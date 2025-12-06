@@ -121,7 +121,16 @@ Below are the key screenshots required for Milestone Project 3 assessment:
 - Example: “Stage deleted”
 - Example: “Vehicle updated”
 
-*(Screenshots will be inserted here before submission)*
+<img width="1442" height="489" alt="Screenshot 2025-12-06 at 20 30 19" src="https://github.com/user-attachments/assets/e19d0fac-e19d-46f6-8a1c-4b5de58b6e8a" />
+<img width="1463" height="619" alt="Screenshot 2025-12-06 at 20 30 02" src="https://github.com/user-attachments/assets/915d2c43-5370-4adb-971f-d7b1b7440c75" />
+<img width="1440" height="594" alt="Screenshot 2025-12-06 at 20 29 11" src="https://github.com/user-attachments/assets/53f67eb6-155e-4086-a6ee-233560eca700" />
+<img width="699" height="249" alt="Screenshot 2025-12-06 at 20 28 03" src="https://github.com/user-attachments/assets/7f7186f8-f529-40f1-9253-72422fd4a55b" />
+<img width="637" height="224" alt="Screenshot 2025-12-06 at 20 27 52" src="https://github.com/user-attachments/assets/94e39366-79ad-40cf-8d03-7e206f71f02c" />
+<img width="613" height="488" alt="Screenshot 2025-12-06 at 20 27 09" src="https://github.com/user-attachments/assets/580acb7c-42b8-4cea-9f19-de9fb92e6cfc" />
+<img width="538" height="389" alt="Screenshot 2025-12-06 at 20 25 52" src="https://github.com/user-attachments/assets/439f7c1e-aaed-4e2d-8334-0668d94d3ae0" />
+<img width="782" height="394" alt="Screenshot 2025-12-06 at 20 25 31" src="https://github.com/user-attachments/assets/bb7f6fa1-4165-47e4-b4b9-f6914c60e7b4" />
+<img width="533" height="448" alt="Screenshot 2025-12-06 at 20 24 48" src="https://github.com/user-attachments/assets/70ef843b-8414-49cc-9acb-673ee3af809a" />
+<img width="692" height="216" alt="Screenshot 2025-12-06 at 20 24 30" src="https://github.com/user-attachments/assets/bb1dadb9-2706-4ec2-b510-87335c0e7e8d" />
 
 ---
 
