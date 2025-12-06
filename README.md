@@ -14,7 +14,7 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 * [User Stories](#user-stories)
 * [UX and Design](#ux-and-design)
 * [Wireframes](#Wireframes)
-* [Data Model Diagram (ERD)](#Data-Model-Diagram)
+* [Data Model Diagram (ERD)](#Data-Model-Diagram-(ERD))
 * [Features](#features)
 * [Future Enhancements](#future-enhancements)
 * [Technologies Used](#technologies-used)
@@ -219,8 +219,8 @@ This form allows a user to add a new vehicle to the system, selecting a customer
 # Data Model Diagram (ERD)
 
 The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker:
-<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 09_34_42 PM" src="https://github.com/user-attachments/assets/3d755a87-a49f-4091-ad41-a27640bb7bc5" />
 
+<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 09_34_42 PM" src="https://github.com/user-attachments/assets/116e4dc3-182c-422d-b05c-9e69e4c0b539" />
 
 ### Explanation of Relationships
 
