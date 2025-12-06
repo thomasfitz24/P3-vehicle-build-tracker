@@ -21,6 +21,8 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 * [Future Enhancements](#future-enhancements)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
+* [Testing Summary](#testing-summary)
+* [Bugs, Errors, and Fixes](#bugs-errors-and-issues-encountered-and-how-they-were-fixed)
 * [Requirements](#requirements)
 * [Deployment](#deployment)
 * [Credits](#credits)
