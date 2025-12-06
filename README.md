@@ -90,6 +90,29 @@ The focus of the project is to demonstrate:
 13. I want to manage customers, vehicles, and stages in the Django admin so I can oversee the system.
 14. I want all models to be searchable and filterable so I can find records quickly.
 
+
+## UX and Design
+
+The focus of this project is on back-end functionality and data modelling, so the UX is intentionally kept simple and clear.
+
+### Information Architecture
+
+The core flow for a user is:
+
+1. **Vehicle List** – entry point showing all vehicles and a link to add a new one.
+2. **Vehicle Detail** – focused view of a single build, showing the owner, build ID, status, and all build stages.
+3. **Stage Forms** – small, focused forms for adding or editing build stages.
+4. **Navigation Links** – “Back to all vehicles” and “Back to vehicle” links keep the user in a clear loop.
+
+### Design Choices
+
+- Clear headings for each page (Vehicle List, Vehicle Detail, Build Stages).
+- Simple, form-based interface to reduce cognitive load for workshop staff.
+- Minimal styling to keep the emphasis on functionality and CRUD behaviour for Milestone 3.
+- Consistent use of links and buttons for actions (Add, Edit, Delete) so the user always understands what will happen next.
+
+Further visual styling, layout improvements, and responsive design are listed in the **Future Enhancements** section.
+
 ## Data Model
 
 The application uses a relational database structured around three core models:
