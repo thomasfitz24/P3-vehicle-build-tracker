@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Build Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 15px 20px;
+            font-size: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 8px 14px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+
+        a.button.red {
+            background: #cc0000;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        ol, ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Vehicle Build Tracker
+</header>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

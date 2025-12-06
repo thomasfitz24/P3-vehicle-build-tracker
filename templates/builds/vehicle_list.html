@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Vehicle List</title>
-</head>
-<body>
-    <h1>Vehicle List</h1>
+{% extends "base.html" %}
 
-    <!-- Link to add a new vehicle -->
-    <p>
-        <a href="{% url 'vehicle_create' %}">Add New Vehicle</a>
-    </p>
+{% block content %}
+<h1>Vehicle List</h1>
 
-    {% if vehicles %}
-        <ul>
-            {% for vehicle in vehicles %}
-                <li>
-                    <a href="{% url 'vehicle_detail' vehicle.pk %}">
-                        {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})
-                    </a>
-                    - Owned by: {{ vehicle.customer.first_name }} {{ vehicle.customer.last_name }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No vehicles found.</p>
-    {% endif %}
-</body>
-</html>
+<a href="{% url 'vehicle_create' %}" class="button">Add New Vehicle</a>
+
+{% if vehicles %}
+    <ul>
+    {% for vehicle in vehicles %}
+        <li>
+            <a href="{% url 'vehicle_detail' vehicle.pk %}">
+                {{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})
+            </a>
+            — Owned by: {{ vehicle.customer }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No vehicles found.</p>
+{% endif %}
+{% endblock %}
