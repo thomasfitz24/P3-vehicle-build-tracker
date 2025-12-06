@@ -39,3 +39,10 @@ def vehicle_update(request, pk):
         form = VehicleForm(instance=vehicle)
 
     return render(request, "builds/vehicle_form.html", {"form": form, "title": "Edit Vehicle"})
+
+def vehicle_delete(request, pk):
+    vehicle = get_object_or_404(Vehicle, pk=pk)
+    if request.method == "POST":
+        vehicle.delete()
+        return redirect("vehicle_list")
+    return render(request, "builds/vehicle_confirm_delete.html", {"vehicle": vehicle})

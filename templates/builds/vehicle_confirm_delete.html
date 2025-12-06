@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete {{ vehicle.make }} {{ vehicle.model }}</title>
+</head>
+<body>
+    <h1>Delete Vehicle</h1>
+
+    <p>Are you sure you want to delete this vehicle?</p>
+
+    <p>
+        <strong>{{ vehicle.make }} {{ vehicle.model }}</strong><br>
+        Build ID: {{ vehicle.vin_or_id }}<br>
+        Owner: {{ vehicle.customer.first_name }} {{ vehicle.customer.last_name }}
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+
+    <p><a href="{% url 'vehicle_detail' vehicle.pk %}">Cancel</a></p>
+</body>
+</html>

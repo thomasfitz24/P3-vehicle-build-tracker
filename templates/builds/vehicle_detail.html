@@ -28,11 +28,14 @@
         <p>No stages defined for this vehicle yet.</p>
     {% endif %}
  
-    <p>
+        <p>
         <a href="{% url 'vehicle_update' vehicle.pk %}">Edit this vehicle</a>
     </p>
 
+    <p>
+        <a href="{% url 'vehicle_delete' vehicle.pk %}">Delete this vehicle</a>
+    </p>
+
     <p><a href="{% url 'vehicle_list' %}">Back to all vehicles</a></p>
-      
-    </body>
-    </html>
+</body>
+</html>
