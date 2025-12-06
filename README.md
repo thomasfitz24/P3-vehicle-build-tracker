@@ -128,17 +128,23 @@ A vehicle can have **multiple build stages** (one-to-many).
 
 ---
 
-### **BuildStage**
+### Explanation:
+
+### BuildStage
 
 Represents an individual stage of the build process.
 
 **Fields:**
 
-- `vehicle` – ForeignKey linking to Vehicle
-- `name` – Stage name
-
-### Explanation:
-
+- `vehicle` – ForeignKey linking the stage to a Vehicle
+- `name` – Stage name (e.g., “Prep panels for paint”)
+- `description` – Optional detail describing the work performed
+- `status` – Not Started, In Progress, Blocked, or Complete
+- `order` – Integer controlling the order stages are displayed
+- `due_date` – Optional expected completion date
+- `completed_date` – Optional timestamp for when the stage is finished
+- `created_at` – Auto timestamp when the stage is created
+- `updated_at` – Auto timestamp updated whenever the stage is changed
 - One **Customer** can own many **Vehicles**
 - One **Vehicle** can contain many **BuildStages**
 - BuildStages cannot exist without a Vehicle
@@ -274,11 +280,22 @@ The following areas were tested:
 
 ---
 
-### Manual Test Cases (to be added)
+### Future Enhancements
 
-A table of individual test cases (inputs, expected output, result) will be inserted here once all features are complete.
+### Manual Test Cases
 
-## Future Enhancements
+| Test Name                                | Input                                      | Expected Result                                      | Actual Result | Pass/Fail |
+| ---------------------------------------- | ------------------------------------------ | ---------------------------------------------------- | ------------- | --------- |
+| Load Vehicle List Page                   | Visit `/`                                | Page loads with heading and “Add New Vehicle” link | As expected   | Pass      |
+| Create Vehicle                           | Fill form with valid data                  | Vehicle is saved and visible in list                 | As expected   | Pass      |
+| Create Vehicle (Missing Required Fields) | Submit empty form                          | Form errors appear                                   | As expected   | Pass      |
+| View Vehicle Detail                      | Click a vehicle in the list                | Detail page loads with all info                      | As expected   | Pass      |
+| Edit Vehicle                             | Change vehicle info in form                | Updates appear on detail page                        | As expected   | Pass      |
+| Delete Vehicle                           | Confirm delete                             | Vehicle removed and list updates                     | As expected   | Pass      |
+| Add Build Stage                          | Fill form with valid fields                | Stage appears under vehicle                          | As expected   | Pass      |
+| Edit Build Stage                         | Modify stage info                          | Updates appear under vehicle                         | As expected   | Pass      |
+| Delete Build Stage                       | Confirm delete                             | Stage removed from list                              | As expected   | Pass      |
+| Navigation Check                         | Use all “Back” and “Edit/Delete” links | All links route correctly                            | As expected   | Pass      |
 
 Although the core CRUD features are complete, there are several planned improvements that would make the system more powerful and user-friendly:
 
@@ -311,8 +328,22 @@ Although the core CRUD features are complete, there are several planned improvem
 
 ### 6. Customer Portal (Long-Term Goal)
 
-- A read-only portal for customers to view progress updates
-- pip freeze > requirements.txt
+- A read-only portal where customers could log in and view build progress
+- Optional ability for customers to upload documents such as inspiration images
+- Integration with notifications (email or SMS)
+
+---
+
+## Deployment
+
+The project can be deployed using either **Heroku** or **Render**.
+The following steps outline deployment using **Render**, which is currently the recommended free option.
+
+### 1. Requirements
+
+Before deployment, ensure:
+
+- Your `requirements.txt` file is up to date:pip freeze > requirements.txt2. Push Code to GitHub Deployment is linked to the GitHub repository used for this project.
 - A `Procfile` is included with: web: gunicorn tracker.wsgi
 
 ### 2. Push Code to GitHub
@@ -333,7 +364,7 @@ Deployment is linked to the GitHub repository used for this project.
 
 ### 4. Set Django Environment Variables
 
-Add:
+Add the following environment variables in Render::
 
 - `SECRET_KEY=<your secret key>`
 - `DEBUG=False`
@@ -351,7 +382,6 @@ Once deployment completes, the live link will appear on your Render dashboard.
 
 **Note:**
 For the milestone submission, a working deployed version is required, along with screenshots or confirmation of deployment steps.
-
 
 ## Credits
 
