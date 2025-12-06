@@ -205,17 +205,22 @@ The initial planning for the Vehicle Build Tracker included two core wireframes 
 
 This screen shows the main landing page of the application, listing all vehicles currently in the system along with an option to add a new vehicle.
 
-*(Insert your Vehicle List wireframe image here)*
+<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 10_01_28 PM" src="https://github.com/user-attachments/assets/112eb252-89e3-4668-936b-431268a6e041" />
+
 
 ### Add Vehicle Wireframe
 
 This form allows a user to add a new vehicle to the system, selecting a customer and entering the vehicle details.
 
-*(Insert your Add Vehicle wireframe image here)*
+<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 09_52_25 PM" src="https://github.com/user-attachments/assets/25d72c36-86d5-4dbc-b00c-e53ae5ed5e42" />
+
+---
 
 # Data Model Diagram (ERD)
 
 The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker:
+<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 09_34_42 PM" src="https://github.com/user-attachments/assets/3d755a87-a49f-4091-ad41-a27640bb7bc5" />
+
 
 ### Explanation of Relationships
 
