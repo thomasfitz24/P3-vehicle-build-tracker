@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Vehicle, BuildStageForm
+from .models import Vehicle, BuildStage
 from .forms import VehicleForm, BuildStageForm
 
 

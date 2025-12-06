@@ -1,6 +1,7 @@
 from django import forms
-from .models import Vehicle
-from .models import BuildStage
+from .models import Vehicle, BuildStage
+
+
 class VehicleForm(forms.ModelForm):
     class Meta:
         model = Vehicle
@@ -12,6 +13,8 @@ class VehicleForm(forms.ModelForm):
             "vin_or_id",
             "status",
         ]
+
+
 class BuildStageForm(forms.ModelForm):
     class Meta:
         model = BuildStage

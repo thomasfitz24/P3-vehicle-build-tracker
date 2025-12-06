@@ -10,12 +10,15 @@
     <p><strong>Status:</strong> {{ vehicle.get_status_display }}</p>
 
     <h2>Build Stages</h2>
-    {% if stages %}
-        <ol>
-            {% for stage in stages %}
-                <li>
-                    <strong>{{ stage.name }}</strong> – {{ stage.get_status_display }}
-                    {% if stage.due_date %}
+<p>
+    <a href="{% url 'stage_create' vehicle.pk %}">Add new build stage</a>
+</p>
+{% if stages %}
+    <ol>
+        {% for stage in stages %}
+            <li>
+                <strong>{{ stage.name }}</strong> – {{ stage.get_status_display }}
+                {% if stage.due_date %}
                         (Due: {{ stage.due_date }})
                     {% endif %}
                     {% if stage.description %}
