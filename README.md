@@ -9,6 +9,7 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 ## Table of Contents
 
 - [Project Overview](#project-overview)
+- [Rationale](#rationale)
 - [User Goals](#user-goals)
 - [Site Owner Goals](#site-owner-goals)
 - [User Stories](#user-stories)
@@ -45,6 +46,32 @@ The focus of the project is to demonstrate:
 - Full CRUD functionality (Create, Read, Update, Delete)
 - A Django back end with templates and forms
 - A clear, workshop-friendly user flow from vehicle list → detail → build stages.
+
+## Rationale
+
+The primary goal of the Vehicle Build Tracker is to provide a focused, database-driven tool for managing custom vehicle builds in a workshop environment. Instead of relying on spreadsheets, emails, or handwritten notes, the project offers a structured way to record customers, vehicles, and build stages from initial intake through to completion. This aligns directly with the brief for Milestone Project 3 by demonstrating a full back-end solution with clear CRUD functionality and relational data design.
+
+The motivation for this project comes from the reality of how many small workshops actually operate. Custom builds are often coordinated through informal systems: shared Excel files, WhatsApp chats, and ad-hoc notes on job sheets. These methods work until the number of vehicles and customers grows, at which point it becomes difficult to answer simple questions like “What stage is this vehicle at?” or “Which builds are close to completion?”. Miscommunication, duplicated information, and missed stages all become more likely when there is no single source of truth.
+
+From a back-end development perspective, this creates a clear opportunity. A relatively small set of core entities—Customer, Vehicle, and BuildStage—captures most of the domain logic needed to track a build. By modelling these explicitly in a relational database and exposing them through a Django application, the project can give workshops a more reliable and maintainable way to manage builds while also satisfying the pedagogical goals of the course (models, views, templates, forms, and admin).
+
+The specific problem the project addresses is the lack of a central, structured place to see the current status and history of each vehicle build. Without such a system, it is difficult for staff to know which builds are active, which stages have been completed, and what work is coming next. This problem affects customer-facing staff (who need clear updates), technicians (who need to see stage sequences), and the workshop owner (who needs an overview of all ongoing work).
+
+The Vehicle Build Tracker proposes a simple but focused solution:
+
+- Each **Customer** can be created once and linked to any number of **Vehicles**.
+- Each **Vehicle** has a unique build ID, basic specs, and an overall status.
+- Each **BuildStage** records a named step in the process, its status, order, and key dates.
+
+Together, these features create a straightforward workflow: staff can list all vehicles, open a specific build, and then read or update the stages associated with it. The application includes full CRUD for both Vehicles and BuildStages, plus admin support for managing customers and seeding data. This keeps the scope realistic while still demonstrating the core patterns expected of a back-end project.
+
+Compared with informal tracking methods, this approach offers several benefits. It reduces the risk of losing information because all data is stored in a single database rather than scattered across tools. It improves clarity, as each vehicle has a dedicated detail page showing its owner, build ID, status, and stages in order. It also improves consistency: stages follow the same structure for every build, making it easier to standardise workshop processes over time. From a learning perspective, it shows how a relatively small codebase can provide meaningful value by modelling the right entities and relationships.
+
+The scope of the current project is deliberately focused on internal workshop use. The application does not yet implement user authentication, role-based permissions, a customer-facing portal, or advanced UI design. Deployment is targeted at a single environment rather than a multi-tenant or multi-workshop setup. These constraints keep the codebase manageable and ensure that the core learning outcomes (Django models, CRUD views, forms, templates, and deployment) are implemented to a good standard before additional complexity is added.
+
+Future enhancements could extend the project in several directions. For example, adding authentication would allow different roles (admin, technician, service advisor) with different permissions. A customer portal could provide read-only access to build statuses. Search and filtering could help staff find builds by customer, build ID, or status. Finally, more advanced UI and visual progress components (timelines, progress bars, dashboards) could make the system even more usable day-to-day.
+
+In summary, the Vehicle Build Tracker exists to solve a clear, real-world problem: the difficulty of managing custom vehicle builds with informal tools. By modelling customers, vehicles, and build stages in a relational database and exposing them through a Django application, the project delivers a practical, maintainable solution while directly meeting the learning and assessment goals of Milestone Project 3.
 
 ---
 
@@ -89,7 +116,6 @@ The focus of the project is to demonstrate:
 
 13. I want to manage customers, vehicles, and stages in the Django admin so I can oversee the system.
 14. I want all models to be searchable and filterable so I can find records quickly.
-
 
 ## UX and Design
 
