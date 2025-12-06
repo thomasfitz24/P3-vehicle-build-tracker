@@ -209,3 +209,76 @@ This structure allows the workshop to track each step of the build from intake t
   - Minimal styling to keep the focus on back-end features for Milestone 3.
 
 Further styling and layout improvements are listed in the **Future Enhancements** section.
+
+## Technologies Used
+
+### Languages
+
+- **Python** – Primary back-end development language.
+- **HTML** – Used for Django templates.
+- **CSS** – (Minimal) For basic layout and structure.
+
+### Frameworks and Libraries
+
+- **Django (Python Web Framework)**
+  - MVC/MVT architecture
+  - URL routing
+  - Django ORM for database management
+  - Django templates
+  - Django admin for internal management
+
+### Tools & Services
+
+- **Git & GitHub** – Version control, commits, and project backups.
+- **VS Code** – Primary development environment.
+- **SQLite** – Default Django relational database for development.
+- **Pip & Virtualenv** – Package and environment management.
+- **Browser DevTools** – Manual testing and layout inspection.
+
+
+## Testing
+
+Testing for this project was carried out manually throughout development.
+The following areas were tested:
+
+### 1. Page Rendering
+
+- All key pages load without errors:
+  - Vehicle List
+  - Vehicle Detail
+  - Add Vehicle
+  - Edit Vehicle
+  - Delete Vehicle
+  - Add Stage
+  - Edit Stage
+  - Delete Stage
+
+### 2. CRUD Operations
+
+- **Vehicles**: Create / Read / Update / Delete
+- **Stages**: Create / Read / Update / Delete
+- Correct redirects after form submission.
+- Confirmation screens appear before destructive actions.
+
+### 3. Form Validation
+
+- Required fields must be completed.
+- VIN/build ID must be unique (enforced in the model).
+- Invalid form submissions correctly re-render with errors.
+
+### 4. User Flow
+
+- Navigation between list → detail → form pages is smooth.
+- “Back to all vehicles“ and “Back to vehicle“ links work as expected.
+
+### 5. Admin Testing
+
+- Records can be created, edited, and deleted in Django Admin.
+- Search and filter functionality works correctly.
+- All models appear in admin.
+
+---
+
+### Manual Test Cases (to be added)
+
+A table of individual test cases (inputs, expected output, result) will be inserted here once all features are complete.
