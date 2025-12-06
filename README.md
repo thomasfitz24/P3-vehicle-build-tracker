@@ -4,25 +4,25 @@ The Vehicle Build Tracker is a full-stack Django web application that allows a w
 
 The project was created as part of **Milestone Project 3 – Back-End Development** for the Code Institute Level 5 Diploma in Web Application Development.
 
----
-
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-- [Rationale](#rationale)
-- [Screenshots](#screenshots)
-- [User Goals](#user-goals)
-- [Site Owner Goals](#site-owner-goals)
-- [User Stories](#user-stories)
-- [UX and Design](#ux-and-design)
-- [Data Model](#data-model)
-- [Features](#features)
-- [Future Enhancements](#future-enhancements)
-- [Technologies Used](#technologies-used)
-- [Testing](#testing)
-- [Requirements](#requirements)
-- [Deployment](#deployment)
-- [Credits](#credits)
+* [Project Overview](#project-overview)
+* [Rationale](#rationale)
+* [Screenshots](#screenshots)
+* [User Goals](#user-goals)
+* [Site Owner Goals](#site-owner-goals)
+* [User Stories](#user-stories)
+* [UX and Design](#ux-and-design)
+* [Wireframes]()
+* [Data Model](#data-model)
+* [Entity Relationship Diagram (ERD)]()
+* [Features](#features)
+* [Future Enhancements](#future-enhancements)
+* [Technologies Used](#technologies-used)
+* [Testing](#testing)
+* [Requirements](#requirements)
+* [Deployment](#deployment)
+* [Credits](#credits)
 
 ---
 
@@ -134,8 +134,6 @@ Below are the key screenshots required for Milestone Project 3 assessment:
 
 ---
 
----
-
 ## User Goals
 
 - To quickly see all active vehicle builds and their current status.
@@ -200,11 +198,28 @@ The core flow for a user is:
 
 Further visual styling, layout improvements, and responsive design are listed in the **Future Enhancements** section.
 
-## Data Model
+# Data Model Diagram (ERD)
 
-The application uses a relational database structured around three core models:
+The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker:
 
-### **Customer**
+### Explanation of Relationships
+
+* **Customer → Vehicle (1-to-Many)**
+
+  Each customer can own  **multiple vehicles** , but every vehicle belongs to **exactly one** customer.
+* **Vehicle → BuildStage (1-to-Many)**
+
+  Each vehicle contains  **multiple build stages** , but every build stage is linked to  **one specific vehicle** .
+
+### Why this structure fits the domain
+
+This model reflects a real workshop environment:
+
+* A customer may have several builds over time.
+* A vehicle progresses through multiple defined stages (prep, paint, interior, testing).
+* Build stages cannot exist independently — they must always belong to a vehicle.
+
+This schema fully supports CRUD operations and meets the Unit 3 requirement for a  **well-designed relational data model**
 
 Represents a person who owns one or more vehicle builds.
 
