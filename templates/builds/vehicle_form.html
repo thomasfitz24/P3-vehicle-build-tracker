@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }}</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block content %}
 <h1>{{ title }}</h1>
 
-<form method="POST">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-
-    <button type="submit">Save</button>
+    <button type="submit" class="button">Save</button>
 </form>
 
-<p><a href="{% url 'vehicle_list' %}">Back to vehicles</a></p>
-
-</body>
-</html>
+<p><a href="{% url 'vehicle_list' %}">Back to all vehicles</a></p>
+{% endblock %}
