@@ -62,3 +62,32 @@ The focus of the project is to demonstrate:
 - To have a central, maintainable system for tracking custom vehicle builds.
 - To make it easier to give accurate progress updates to customers.
 - To demonstrate full-stack back-end skills, including database design, CRUD, and deployment, for Milestone Project 3.
+
+
+## User Stories
+
+### As a customer service advisor:
+
+1. I want to view a list of all customer vehicles so I can quickly see which builds are currently active.
+2. I want to be able to click on a vehicle to view its full build history and stages.
+3. I want each vehicle to have a unique build ID so I can accurately identify it in communication with customers.
+4. I want to see each vehicle’s latest status so I know whether it is in progress, waiting on parts, or completed.
+
+### As a workshop technician:
+
+5. I want to add new build stages to a vehicle so I can record work that needs to be completed.
+6. I want to edit a build stage so I can update progress during the build.
+7. I want to delete a stage if it is added by mistake or becomes irrelevant.
+8. I want the stages to be displayed in a consistent order so I can read the timeline of the build clearly.
+
+### As the site owner:
+
+9. I want to add new vehicles to the system and link them to a customer so I can track all active builds.
+10. I want to edit and delete vehicles so I can manage the database cleanly during the project lifecycle.
+11. I want the system to be simple and intuitive so workshop staff can use it without training.
+12. I want the data to be stored securely and reliably so progress is never lost.
+
+### As an admin:
+
+13. I want to manage customers, vehicles, and stages in the Django admin so I can oversee the system.
+14. I want all models to be searchable and filterable so I can find records quickly.
