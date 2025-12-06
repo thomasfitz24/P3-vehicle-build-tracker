@@ -1,4 +1,7 @@
-from builds.views import vehicle_list, vehicle_detail, vehicle_create, vehicle_update, vehicle_delete, stage_create
+from django.contrib import admin
+from django.urls import path
+from builds.views import vehicle_list, vehicle_detail, vehicle_create, vehicle_update, vehicle_delete, stage_create, stage_delete, stage_update
+
 """
 URL configuration for tracker project.
 
@@ -16,10 +19,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path
-from builds.views import vehicle_list, vehicle_detail
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", vehicle_list, name="vehicle_list"),
@@ -28,4 +27,6 @@ urlpatterns = [
     path("vehicles/<int:pk>/", vehicle_detail, name="vehicle_detail"),
     path("vehicles/<int:pk>/delete/", vehicle_delete, name="vehicle_delete"),
     path("vehicles/<int:vehicle_pk>/stages/add/", stage_create, name="stage_create"),
+    path("vehicles/stages/<int:pk>/edit/", stage_update, name="stage_update"),
+    path("vehicles/stages/<int:pk>/delete/", stage_delete, name="stage_delete"),
 ]

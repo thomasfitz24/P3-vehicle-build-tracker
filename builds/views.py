@@ -66,3 +66,37 @@ def stage_create(request, vehicle_pk):
         "title": "Add Build Stage",
     }
     return render(request, "builds/stage_form.html", context)
+
+def stage_update(request, pk):
+    stage = get_object_or_404(BuildStage, pk=pk)
+    vehicle = stage.vehicle
+
+    if request.method == "POST":
+        form = BuildStageForm(request.POST, instance=stage)
+        if form.is_valid():
+            form.save()
+            return redirect("vehicle_detail", pk=vehicle.pk)
+    else:
+        form = BuildStageForm(instance=stage)
+
+    context = {
+        "form": form,
+        "vehicle": vehicle,
+        "title": "Edit Build Stage",
+    }
+    return render(request, "builds/stage_form.html", context)
+
+
+def stage_delete(request, pk):
+    stage = get_object_or_404(BuildStage, pk=pk)
+    vehicle = stage.vehicle
+
+    if request.method == "POST":
+        stage.delete()
+        return redirect("vehicle_detail", pk=vehicle.pk)
+
+    context = {
+        "stage": stage,
+        "vehicle": vehicle,
+    }
+    return render(request, "builds/stage_confirm_delete.html", context)
