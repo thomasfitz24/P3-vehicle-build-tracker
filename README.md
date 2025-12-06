@@ -148,3 +148,64 @@ Represents an individual stage of the build process.
 - Vehicles cannot exist without being assigned to a Customer
 
 This structure allows the workshop to track each step of the build from intake to completion.
+
+
+## Features
+
+### Existing Features
+
+#### 1. Vehicle List Page
+
+- Displays all vehicles stored in the system.
+- Shows key information at a glance: make, model, internal build ID, and owner name.
+- Provides a link to view full details for each vehicle.
+- Includes a clear call-to-action to **add a new vehicle**.
+
+#### 2. Vehicle Detail Page
+
+- Shows full information for a single vehicle:
+  - Owner
+  - Build ID
+  - Status
+- Lists all associated build stages in order.
+- Provides links to:
+  - Add a new build stage
+  - Edit the vehicle
+  - Delete the vehicle
+  - Return to the vehicle list
+
+#### 3. Vehicle CRUD (Create, Read, Update, Delete)
+
+- **Create**: Form to add a new vehicle and assign it to a customer.
+- **Read**: Vehicle list and detail views.
+- **Update**: Edit view using a ModelForm to update vehicle information.
+- **Delete**: Confirmation page before a vehicle is permanently removed.
+
+#### 4. Build Stage CRUD
+
+- **Create**: Ability to add new stages for a specific vehicle (e.g. “Prep panels for paint”, “Body in paint”).
+- **Read**: All stages are displayed on the vehicle detail page, in a logical order.
+- **Update**: Edit view to update name, status, description, and dates of a stage.
+- **Delete**: Confirmation page before removing a stage from the build.
+
+#### 5. Django Admin Integration
+
+- Admin interface configured for:
+  - Customers
+  - Vehicles
+  - BuildStages
+- List displays show key fields for quick overview.
+- Search and filter options make it easier to find specific builds or customers.
+- Useful during development to seed data and manage records.
+
+---
+
+### UX and Design (Current State)
+
+- The project currently uses simple Django templates to prioritise clarity and functionality.
+- Pages focus on:
+  - Clear headings (Vehicle List, Vehicle Detail, Build Stages)
+  - Logical navigation (list → detail → form → back again)
+  - Minimal styling to keep the focus on back-end features for Milestone 3.
+
+Further styling and layout improvements are listed in the **Future Enhancements** section.
