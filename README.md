@@ -1,4 +1,3 @@
-
 # P3 – Vehicle Build Tracker
 
 The Vehicle Build Tracker is a full-stack Django web application that allows a workshop or custom vehicle builder to track each customer build from initial intake through key stages such as prep, paint, interior, and final testing.
@@ -63,7 +62,6 @@ The focus of the project is to demonstrate:
 - To make it easier to give accurate progress updates to customers.
 - To demonstrate full-stack back-end skills, including database design, CRUD, and deployment, for Milestone Project 3.
 
-
 ## User Stories
 
 ### As a customer service advisor:
@@ -91,7 +89,6 @@ The focus of the project is to demonstrate:
 
 13. I want to manage customers, vehicles, and stages in the Django admin so I can oversee the system.
 14. I want all models to be searchable and filterable so I can find records quickly.
-
 
 ## Data Model
 
@@ -148,7 +145,6 @@ Represents an individual stage of the build process.
 - Vehicles cannot exist without being assigned to a Customer
 
 This structure allows the workshop to track each step of the build from intake to completion.
-
 
 ## Features
 
@@ -235,7 +231,6 @@ Further styling and layout improvements are listed in the **Future Enhancements*
 - **Pip & Virtualenv** – Package and environment management.
 - **Browser DevTools** – Manual testing and layout inspection.
 
-
 ## Testing
 
 Testing for this project was carried out manually throughout development.
@@ -282,3 +277,85 @@ The following areas were tested:
 ### Manual Test Cases (to be added)
 
 A table of individual test cases (inputs, expected output, result) will be inserted here once all features are complete.
+
+## Future Enhancements
+
+Although the core CRUD features are complete, there are several planned improvements that would make the system more powerful and user-friendly:
+
+### 1. Improved UI and Styling
+
+- Use a shared base template (`base.html`)
+- Add a navigation bar
+- Introduce responsive design
+- Apply consistent CSS styling throughout
+
+### 2. User Authentication
+
+- Allow staff to log in and manage builds securely
+- Add permissions (e.g., only admins can delete vehicles)
+
+### 3. Progress Tracking / Timeline View
+
+- Visual representation of build stages (e.g., timeline / progress bar)
+- Colour-coded stage statuses
+
+### 4. File Uploads
+
+- Allow images or documents to be attached to build stages
+- Useful for workshop photos or inspection reports
+
+### 5. Search and Filtering
+
+- Search for vehicles by build ID, customer, or model
+- Filter by status (Active / Completed / On Hold)
+
+### 6. Customer Portal (Long-Term Goal)
+
+- A read-only portal for customers to view progress updates
+- pip freeze > requirements.txt
+- A `Procfile` is included with: web: gunicorn tracker.wsgi
+
+### 2. Push Code to GitHub
+
+Deployment is linked to the GitHub repository used for this project.
+
+### 3. Create a Render Web Service
+
+1. Go to https://render.com
+2. Create a new **Web Service**
+3. Connect your GitHub account and select this repository
+4. Set:
+
+- **Runtime:** Python
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `gunicorn tracker.wsgi`
+- **Environment:** `PYTHON_VERSION=3.12`
+
+### 4. Set Django Environment Variables
+
+Add:
+
+- `SECRET_KEY=<your secret key>`
+- `DEBUG=False`
+- `ALLOWED_HOSTS=your_render_domain`
+
+### 5. Run Database Migrations
+
+In the Render dashboard shell: python manage.py migrate
+
+### 6. App Live
+
+Once deployment completes, the live link will appear on your Render dashboard.
+
+---
+
+**Note:**
+For the milestone submission, a working deployed version is required, along with screenshots or confirmation of deployment steps.
+
+
+## Credits
+
+- Django documentation for guidance on model design and CRUD patterns.
+- Code Institute educational materials for project requirements and structure.
+- Stack Overflow and Django community examples for general debugging.
+- All project code, structure, and templates written by the student (Thomas Fitzgerald) for Milestone Project 3.
