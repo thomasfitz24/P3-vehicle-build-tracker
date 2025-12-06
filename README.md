@@ -10,6 +10,7 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 
 - [Project Overview](#project-overview)
 - [Rationale](#rationale)
+- [Screenshots](#screenshots)
 - [User Goals](#user-goals)
 - [Site Owner Goals](#site-owner-goals)
 - [User Stories](#user-stories)
@@ -19,6 +20,7 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 - [Future Enhancements](#future-enhancements)
 - [Technologies Used](#technologies-used)
 - [Testing](#testing)
+- [Requirements](#requirements)
 - [Deployment](#deployment)
 - [Credits](#credits)
 
@@ -72,6 +74,56 @@ The scope of the current project is deliberately focused on internal workshop us
 Future enhancements could extend the project in several directions. For example, adding authentication would allow different roles (admin, technician, service advisor) with different permissions. A customer portal could provide read-only access to build statuses. Search and filtering could help staff find builds by customer, build ID, or status. Finally, more advanced UI and visual progress components (timelines, progress bars, dashboards) could make the system even more usable day-to-day.
 
 In summary, the Vehicle Build Tracker exists to solve a clear, real-world problem: the difficulty of managing custom vehicle builds with informal tools. By modelling customers, vehicles, and build stages in a relational database and exposing them through a Django application, the project delivers a practical, maintainable solution while directly meeting the learning and assessment goals of Milestone Project 3.
+
+## Screenshots
+
+Below are the key screenshots required for Milestone Project 3 assessment:
+
+### Home (Vehicle List) Page
+
+- Shows all vehicles in the system.
+- Includes “Add Vehicle” button and navigation bar.
+
+### Vehicle Detail Page
+
+- Displays full build information for a selected vehicle.
+- Shows build stages, edit/delete buttons, and stage actions.
+
+### Add Vehicle Form
+
+- Demonstrates form validation and correct CRUD handling.
+
+### Edit Vehicle Form
+
+- Shows update functionality and existing data pre-filled.
+
+### Add Build Stage Form
+
+- Shows ability to add new build stages linked to a vehicle.
+
+### Edit Build Stage
+
+- Demonstrates updating a stage with validation.
+
+### Delete Confirmation Pages
+
+- Vehicle delete confirmation
+- Build stage delete confirmation
+
+### Django Admin Panel
+
+- Showing Customers, Vehicles, and Build Stages in admin.
+- Includes search, filters, and model overview.
+
+### Success Messages
+
+- Example: “Vehicle added successfully”
+- Example: “Stage deleted”
+- Example: “Vehicle updated”
+
+*(Screenshots will be inserted here before submission)*
+
+---
 
 ---
 
@@ -159,7 +211,7 @@ A customer can have **multiple vehicles** associated with them (one-to-many).
 
 ---
 
-### **Vehicle**
+### Vehicle
 
 Represents a single vehicle being built or restored.
 
@@ -380,6 +432,18 @@ Although the core CRUD features are complete, there are several planned improvem
 - A read-only portal where customers could log in and view build progress
 - Optional ability for customers to upload documents such as inspiration images
 - Integration with notifications (email or SMS)
+
+---
+
+## Requirements
+
+Before deployment or running locally, ensure:
+
+- Python 3.12+
+- Django installed via requirements.txt
+- A virtual environment is activated
+- All migrations have been applied:
+  `python manage.py migrate`
 
 ---
 
