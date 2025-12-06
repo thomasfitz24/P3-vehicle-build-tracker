@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }} – {{ vehicle.make }} {{ vehicle.model }}</title>
-</head>
-<body>
-    <h1>{{ title }} for {{ vehicle.make }} {{ vehicle.model }}</h1>
+{% extends "base.html" %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+{% block content %}
+<h1>{{ title }}</h1>
 
-        <button type="submit">Save</button>
-    </form>
+<p>Vehicle: <strong>{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.vin_or_id }})</strong></p>
 
-    <p><a href="{% url 'vehicle_detail' vehicle.pk %}">Back to vehicle</a></p>
-</body>
-</html>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Save</button>
+</form>
+
+<p><a href="{% url 'vehicle_detail' vehicle.pk %}">Back to vehicle</a></p>
+{% endblock %}
