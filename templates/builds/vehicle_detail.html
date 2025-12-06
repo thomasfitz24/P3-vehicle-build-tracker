@@ -5,33 +5,40 @@
 </head>
 <body>
     <h1>{{ vehicle.make }} {{ vehicle.model }}</h1>
+
     <p><strong>Owner:</strong> {{ vehicle.customer.first_name }} {{ vehicle.customer.last_name }}</p>
     <p><strong>Build ID:</strong> {{ vehicle.vin_or_id }}</p>
     <p><strong>Status:</strong> {{ vehicle.get_status_display }}</p>
 
     <h2>Build Stages</h2>
-<p>
-    <a href="{% url 'stage_create' vehicle.pk %}">Add new build stage</a>
-</p>
-{% if stages %}
-    <ol>
-        {% for stage in stages %}
-            <li>
-                <strong>{{ stage.name }}</strong> – {{ stage.get_status_display }}
-                {% if stage.due_date %}
+
+    <p>
+        <a href="{% url 'stage_create' vehicle.pk %}">Add new build stage</a>
+    </p>
+
+    {% if stages %}
+        <ol>
+            {% for stage in stages %}
+                <li>
+                    <strong>{{ stage.name }}</strong> – {{ stage.get_status_display }}
+                    {% if stage.due_date %}
                         (Due: {{ stage.due_date }})
                     {% endif %}
                     {% if stage.description %}
                         <br>{{ stage.description }}
                     {% endif %}
+
+                    <br>
+                    <a href="{% url 'stage_update' stage.pk %}">Edit stage</a> |
+                    <a href="{% url 'stage_delete' stage.pk %}">Delete stage</a>
                 </li>
             {% endfor %}
         </ol>
     {% else %}
         <p>No stages defined for this vehicle yet.</p>
     {% endif %}
- 
-        <p>
+
+    <p>
         <a href="{% url 'vehicle_update' vehicle.pk %}">Edit this vehicle</a>
     </p>
 
