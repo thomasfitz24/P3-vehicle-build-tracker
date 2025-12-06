@@ -29,4 +29,7 @@ urlpatterns = [
     path("vehicles/<int:vehicle_pk>/stages/add/", stage_create, name="stage_create"),
     path("vehicles/stages/<int:pk>/edit/", stage_update, name="stage_update"),
     path("vehicles/stages/<int:pk>/delete/", stage_delete, name="stage_delete"),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", include("builds.urls")),
 ]
