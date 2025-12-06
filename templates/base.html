@@ -80,6 +80,23 @@
 </header>
 
 <div class="container">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div style="
+                padding: 12px;
+                margin-bottom: 15px;
+                border-radius: 5px;
+                background: {% if message.tags == 'success' %}#d4f8d4{% elif message.tags == 'error' %}#f8d4d4{% else %}#e2e2e2{% endif %};
+                color: #333;
+                border-left: 4px solid
+                    {% if message.tags == 'success' %}#31a24c{% elif message.tags == 'error' %}#cc0000{% else %}#666{% endif %};
+            ">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </div>
