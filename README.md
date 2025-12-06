@@ -207,7 +207,6 @@ This screen shows the main landing page of the application, listing all vehicles
 
 <img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 10_01_28 PM" src="https://github.com/user-attachments/assets/112eb252-89e3-4668-936b-431268a6e041" />
 
-
 ### Add Vehicle Wireframe
 
 This form allows a user to add a new vehicle to the system, selecting a customer and entering the vehicle details.
@@ -218,11 +217,9 @@ This form allows a user to add a new vehicle to the system, selecting a customer
 
 # Data Model Diagram (ERD)
 
-The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker:
-<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 09_34_42 PM" src="https://github.com/user-attachments/assets/3d755a87-a49f-4091-ad41-a27640bb7bc5" />
+The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker: 
 
-
-### Explanation of Relationships
+Explanation of Relationships
 
 * **Customer → Vehicle (1-to-Many)**
 
@@ -346,16 +343,6 @@ This structure allows the workshop to track each step of the build from intake t
 - Useful during development to seed data and manage records.
 
 ---
-
-### UX and Design (Current State)
-
-- The project currently uses simple Django templates to prioritise clarity and functionality.
-- Pages focus on:
-  - Clear headings (Vehicle List, Vehicle Detail, Build Stages)
-  - Logical navigation (list → detail → form → back again)
-  - Minimal styling to keep the focus on back-end features for Milestone 3.
-
-Further styling and layout improvements are listed in the **Future Enhancements** section.
 
 ## Technologies Used
 
