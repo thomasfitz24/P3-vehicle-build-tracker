@@ -91,3 +91,60 @@ The focus of the project is to demonstrate:
 
 13. I want to manage customers, vehicles, and stages in the Django admin so I can oversee the system.
 14. I want all models to be searchable and filterable so I can find records quickly.
+
+
+## Data Model
+
+The application uses a relational database structured around three core models:
+
+### **Customer**
+
+Represents a person who owns one or more vehicle builds.
+
+**Fields:**
+
+- `first_name` – Customer first name
+- `last_name` – Customer last name
+- `email` – Optional contact email
+- `phone` – Optional contact phone number
+- `created_at` – Timestamp for when the customer was added
+
+A customer can have **multiple vehicles** associated with them (one-to-many).
+
+---
+
+### **Vehicle**
+
+Represents a single vehicle being built or restored.
+
+**Fields:**
+
+- `customer` – ForeignKey linking to Customer
+- `make` – Vehicle manufacturer
+- `model` – Model name
+- `year` – Optional manufacturing year
+- `vin_or_id` – Unique internal build ID or VIN
+- `status` – Active, Completed, or On Hold
+- `created_at` – Timestamp for when the vehicle record was created
+
+A vehicle can have **multiple build stages** (one-to-many).
+
+---
+
+### **BuildStage**
+
+Represents an individual stage of the build process.
+
+**Fields:**
+
+- `vehicle` – ForeignKey linking to Vehicle
+- `name` – Stage name
+
+### Explanation:
+
+- One **Customer** can own many **Vehicles**
+- One **Vehicle** can contain many **BuildStages**
+- BuildStages cannot exist without a Vehicle
+- Vehicles cannot exist without being assigned to a Customer
+
+This structure allows the workshop to track each step of the build from intake to completion.
