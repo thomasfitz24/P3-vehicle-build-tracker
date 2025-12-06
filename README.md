@@ -4,6 +4,8 @@ The Vehicle Build Tracker is a full-stack Django web application that allows a w
 
 The project was created as part of **Milestone Project 3 – Back-End Development** for the Code Institute Level 5 Diploma in Web Application Development.
 
+---
+
 ## Table of Contents
 
 * [Project Overview](#project-overview)
@@ -13,8 +15,8 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 * [Site Owner Goals](#site-owner-goals)
 * [User Stories](#user-stories)
 * [UX and Design](#ux-and-design)
-* [Wireframes](#Wireframes)
-* [Data Model Diagram (ERD)](#Data-Model-Diagram)
+* [Wireframes](#wireframes)
+* [Data Model Diagram (ERD)](#data-model-diagram-erd)
 * [Features](#features)
 * [Future Enhancements](#future-enhancements)
 * [Technologies Used](#technologies-used)
@@ -217,13 +219,20 @@ This form allows a user to add a new vehicle to the system, selecting a customer
 
 # Data Model Diagram (ERD)
 
-The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker: 
+The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker:
 
 Explanation of Relationships
+============================
 
-* **Customer → Vehicle (1-to-Many)**
+The following Entity Relationship Diagram shows the structure of the relational database used in the Vehicle Build Tracker:
 
-  Each customer can own  **multiple vehicles** , but every vehicle belongs to **exactly one** customer.
+<img width="1024" height="1024" alt="ChatGPT Image Dec 6, 2025, 09_34_42 PM" src="https://github.com/user-attachments/assets/116e4dc3-182c-422d-b05c-9e69e4c0b539" />
+
+### Explanation of Relationships
+
+**Customer → Vehicle (1-to-Many)**
+
+* Each customer can own  **multiple vehicles** , but every vehicle belongs to **exactly one** customer.
 * **Vehicle → BuildStage (1-to-Many)**
 
   Each vehicle contains  **multiple build stages** , but every build stage is linked to  **one specific vehicle** .
