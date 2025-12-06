@@ -15,7 +15,7 @@ The project was created as part of **Milestone Project 3 – Back-End Developmen
 * [UX and Design](#ux-and-design)
 * [Wireframes]()
 * [Data Model](#data-model)
-* [Entity Relationship Diagram (ERD)]()
+* [Data Model Diagram (ERD)]()
 * [Features](#features)
 * [Future Enhancements](#future-enhancements)
 * [Technologies Used](#technologies-used)
@@ -197,6 +197,22 @@ The core flow for a user is:
 - Consistent use of links and buttons for actions (Add, Edit, Delete) so the user always understands what will happen next.
 
 Further visual styling, layout improvements, and responsive design are listed in the **Future Enhancements** section.
+
+## Wireframes
+
+The initial planning for the Vehicle Build Tracker included two core wireframes representing the main user interactions within the system. These wireframes helped define layout, navigation, and expected user flow before development began.
+
+### Vehicle List Wireframe
+
+This screen shows the main landing page of the application, listing all vehicles currently in the system along with an option to add a new vehicle.
+
+*(Insert your Vehicle List wireframe image here)*
+
+### Add Vehicle Wireframe
+
+This form allows a user to add a new vehicle to the system, selecting a customer and entering the vehicle details.
+
+*(Insert your Add Vehicle wireframe image here)*
 
 # Data Model Diagram (ERD)
 
