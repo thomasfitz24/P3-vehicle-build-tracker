@@ -427,252 +427,117 @@ The following areas were tested:
 
 ### 1. Improved UI and Styling
 
-# ** Manual Test Cases (Enhanced & Expanded)**
+# Manual Test Cases (Enhanced & Expanded)
 
-### Manual Test Cases
+## Testing Summary
 
-| Test Name                           | Input                                       | Expected Result                                                                | Actual Result              | Pass/Fail |
-| ----------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------- | --------- |
-| Load Vehicle List Page              | Visit `/`                                 | Page loads, displays header, navigation bar, and “Add Vehicle” button        | Page loads correctly       | Pass      |
-| Create Vehicle                      | Submit valid data in Add Vehicle form       | New vehicle saved, success banner shown, redirected to list page               | Works as expected          | Pass      |
-| Create Vehicle (Invalid Submission) | Submit empty or partially completed form    | Validation errors displayed, no save occurs                                    | Errors displayed correctly | Pass      |
-| View Vehicle Detail                 | Click a vehicle from list                   | Vehicle detail page loads, showing owner, build ID, status, and list of stages | Works correctly            | Pass      |
-| Edit Vehicle                        | Update fields in Edit Vehicle form          | Vehicle updates saved and visible on detail page with success message          | Works correctly            | Pass      |
-| Delete Vehicle                      | Click delete → confirm                     | Vehicle removed from database, redirected to list, success banner shown        | Works correctly            | Pass      |
-| Add Build Stage                     | Submit valid stage form                     | Stage appears under vehicle with correct ordering and success message          | Works correctly            | Pass      |
-| Add Build Stage (Invalid)           | Submit blank stage form                     | Validation errors shown                                                        | Errors shown correctly     | Pass      |
-| Edit Build Stage                    | Update stage name/status                    | Stage updates reflected instantly on detail page                               | Works correctly            | Pass      |
-| Delete Build Stage                  | Click delete → confirm                     | Stage removed from vehicle list and success message displayed                  | Works correctly            | Pass      |
-| Navigation Check                    | Use all navigation buttons and return links | All links route correctly with no broken pages                                 | All paths correct          | Pass      |
-| Admin Panel Access                  | Visit `/admin/`                           | Redirect to login and then access Django admin after login                     | Works correctly            | Pass      |
-| Data Integrity                      | Delete parent objects (Vehicle/Customer)    | Related BuildStages removed or protected according to model rules              | Behaves correctly          | Pass      |
-| UI Rendering                        | Test pages on multiple screen sizes         | Content remains accessible and readable                                        | Works correctly            | Pass      |
+The Vehicle Build Tracker was tested throughout development using a combination of manual testing, iterative debugging, and browser-based functionality checks. Each feature was tested immediately after implementation to ensure that core CRUD functionality operated as expected for both Vehicles and Build Stages.
+
+Form validation was verified by submitting incomplete or incorrect data to ensure error messages appeared and invalid entries were not saved. Navigation paths (list → detail → form → confirm → redirect) were tested to confirm consistency and usability across the application. Success and error messages were monitored to ensure Django’s messaging framework was working as intended.
+
+Additional checks were performed within the Django Admin panel to verify that all models (Customer, Vehicle, BuildStage) were stored, retrieved, updated, and deleted correctly. No critical or blocking bugs were discovered during testing. Minor issues such as incorrect template paths, missing imports, or outdated routes were fixed immediately during development. All tests confirm that the system meets the learning objectives for a stable CRUD-based Django application.
 
 ---
 
-# Testing Summary
 
-The Vehicle Build Tracker was tested continuously throughout development using a combination of manual tests and functional validation inside the web browser. Each feature was tested after implementation to ensure full CRUD functionality worked as expected for both Vehicles and Build Stages. Form validation was confirmed by deliberately submitting incorrect or incomplete data to verify that relevant error messages appeared and no invalid records were saved. Navigation was tested to ensure that all links, redirects, and success messages appeared consistently across the application. Additional checks were performed within the Django Admin panel to ensure database entries were stored, retrieved, and updated correctly. No blocking bugs were discovered during testing, and any minor issues (such as template path errors or missing success messages) were resolved immediately during iterative development. These tests confirm that the system meets the requirements of a stable, functional CRUD-based Django application.
-
-
-# Bugs, Errors, and Issues Encountered (and How They Were Fixed)
-
-During development, several issues were encountered that required debugging and fixes. Each issue is documented below, along with the solution used to resolve it. This log demonstrates effective problem-solving, version control use, and iterative development.
-
----
-
-## 1. TemplateDoesNotExist errors (vehicle_list.html & vehicle_detail.html)
-
-**Problem:**
-
-When navigating to `/` or `/vehicles/<id>`, Django raised:
-
-`TemplateDoesNotExist: builds/vehicle_list.html`
-
-**Cause:**
-
-Template files were incorrectly placed inside the app folder instead of the main `templates/` directory or the template paths were not correctly configured in `settings.py`.
-
-**Fix:**
-
-* Moved all template files into the global `templates/builds/` folder.
-* Updated `TEMPLATES['DIRS']` in `settings.py` to include the correct path:
-  <pre class="overflow-visible!" data-start="1341" data-end="1391"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-python"><span><span>"DIRS"</span><span>: [BASE_DIR / </span><span>"templates"</span><span>]
-  </span></span></code></div></div></pre>
+| Feature                   | Test Description                                 | Expected Result                            | Outcome |
+| ------------------------- | ------------------------------------------------ | ------------------------------------------ | ------- |
+| Vehicle List Page         | Load homepage at `/`                           | Vehicle list displays with correct links   | Pass    |
+| Add Vehicle               | Submit valid vehicle data                        | Vehicle saves and appears in list          | Pass    |
+| Add Vehicle (invalid)     | Submit empty form                                | Error messages appear                      | Pass    |
+| Vehicle Detail Page       | Click a vehicle from list                        | Detail page displays correct data + stages | Pass    |
+| Edit Vehicle              | Update fields                                    | Updated data shows on detail page          | Pass    |
+| Delete Vehicle            | Confirm delete                                   | Vehicle removed from list                  | Pass    |
+| Add Build Stage           | Add valid stage to vehicle                       | Stage appears under the correct vehicle    | Pass    |
+| Add Build Stage (invalid) | Submit empty form                                | Validation errors shown                    | Pass    |
+| Edit Build Stage          | Update fields                                    | Updated stage appears correctly            | Pass    |
+| Delete Build Stage        | Confirm delete                                   | Stage removed from timeline                | Pass    |
+| Navigation                | Use all “Back”, “Edit”, and “Delete” links | All routes operate correctly               | Pass    |
+| Admin Panel               | Create/edit/delete models                        | Admin site updates reflect DB changes      | Pass    |
+| Deployment                | Load live site on Render                         | Application loads without 500 errors       | Pass    |
 
 ---
 
-## 2. ImportError: cannot import name 'BuildStageForm'
+# **Bugs, Errors, and Fixes During Development**
 
-**Problem:**
+A number of issues were encountered during the project. Below is a structured summary of each error, its cause, and the fix applied.
 
-The server failed to load with:
+---
 
-`ImportError: cannot import name 'BuildStageForm'`
+### **1. TemplateDoesNotExist (vehicle_list.html / vehicle_detail.html)**
 
-**Cause:**
+**Cause:** Templates stored in the wrong folder and incorrect template path configuration.
 
-The form was created in `forms.py` but was incorrectly imported from `models.py`.
+**Fix:** Moved all templates into `templates/builds/` and updated `TEMPLATES['DIRS']` to include `BASE_DIR / "templates"`.
 
-**Fix:**
+---
 
-Updated the import in `views.py`:
+### **2. ImportError: cannot import name 'BuildStageForm'**
 
-<pre class="overflow-visible!" data-start="1703" data-end="1763"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-python"><span><span>from</span><span> .forms </span><span>import</span><span> VehicleForm, BuildStageForm
+**Cause:** Incorrect import location.
+
+**Fix:** Corrected import in `views.py` to load forms from `forms.py`.
+
+---
+
+### **3. Homepage showing “No vehicles available”**
+
+**Cause:** Wrong template inheritance and misconfigured root URL.
+
+**Fix:** Repaired the queryset and confirmed the route:
+
+<pre class="overflow-visible!" data-start="3701" data-end="3758"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-python"><span><span>path(</span><span>""</span><span>, vehicle_list, name=</span><span>"vehicle_list"</span><span>)
 </span></span></code></div></div></pre>
 
 ---
 
-## 3. Homepage showed blank section — no clickable vehicle items
+### **4. Django messages not displaying**
 
-**Problem:**
+**Cause:** Missing message loop in `base.html`.
 
-The homepage displayed “No vehicles available” even though vehicles existed.
-
-**Cause:**
-
-* Wrong template path
-* Incorrect queryset or missing data
-* Missing URL name in `{% url %}` in template
-
-**Fix:**
-
-* Corrected template inheritance
-* Ensured the correct view is linked to root URL:
-  <pre class="overflow-visible!" data-start="2157" data-end="2220"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-python"><span><span>path(</span><span>""</span><span>, vehicle_list, name=</span><span>"vehicle_list"</span><span>)
-  </span></span></code></div></div></pre>
+**Fix:** Added message rendering and ensured MessageMiddleware was enabled.
 
 ---
 
-## 4. Messages Framework Not Displaying
+### **5. 404 on `/vehicles/`**
 
-**Problem:**
+**Cause:** Route was never defined.
 
-Success messages (e.g. "Vehicle added successfully") did not appear on pages.
+**Fix:** Added explicit list route:
 
-**Cause:**
-
-`messages` context was not included in `base.html` and message tags were not rendered.
-
-**Fix:**
-
-* Added message loop to `base.html`
-* Confirmed `django.contrib.messages` in `INSTALLED_APPS`
-* Added `MessageMiddleware`
-
-Result: All CRUD success banners now appear correctly.
-
----
-
-## 5. 404 “Page Not Found” for `/vehicles/`
-
-**Problem:**
-
-Navigating to `/vehicles/` returned a 404 error.
-
-**Cause:**
-
-The route `/vehicles/` was never defined — only dynamic routes existed.
-
-**Fix:**
-
-Added a clean list view:
-
-<pre class="overflow-visible!" data-start="2908" data-end="2974"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-python"><span><span>path(</span><span>"vehicles/"</span><span>, vehicle_list, name=</span><span>"vehicle_list"</span><span>)
+<pre class="overflow-visible!" data-start="4050" data-end="4116"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-python"><span><span>path(</span><span>"vehicles/"</span><span>, vehicle_list, name=</span><span>"vehicle_list"</span><span>)
 </span></span></code></div></div></pre>
 
 ---
 
-## 6. Server startup failure — ModuleNotFoundError: No module named 'builds'
+### **6. ModuleNotFoundError: No module named 'builds'**
 
-**Problem:**
+**Cause:** Folder structure was altered during template refactoring.
 
-Running `python manage.py runserver` crashed instantly.
-
-**Cause:**
-
-The folder structure was temporarily altered while moving templates, causing Django to lose reference to the `builds` app.
-
-**Fix:**
-
-* Restored folder structure
-* Ensured `builds` appears correctly in `INSTALLED_APPS`
-* Confirmed the folder includes `__init__.py`
+**Fix:** Restored correct app structure and ensured `__init__.py` existed.
 
 ---
 
-## 7. Divergent Git Branches — Git refused to pull
+### **7. Git pull failed (divergent branches)**
 
-**Problem:**
-
-Attempting `git pull` returned:
-
-<pre class="overflow-visible!" data-start="3531" data-end="3598"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!"><span><span>fatal:</span><span> Need </span><span>to</span><span> specify how </span><span>to</span><span> reconcile divergent branches.
-</span></span></code></div></div></pre>
-
-**Cause:**
-
-Local edits conflicted with updated README pushed directly to GitHub.
+**Cause:** README edited directly on GitHub causing branch divergence.
 
 **Fix:**
 
-Used safe merge strategy:
-
-<pre class="overflow-visible!" data-start="3722" data-end="3788"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!"><span><span>git </span><span>add</span><span> .
-git </span><span>commit</span><span></span><span>-</span><span>m "Temp commit"
-git pull </span><span>--no-rebase</span><span>
-</span></span></code></div></div></pre>
-
-This synced local and remote branches safely.
-
----
-
-## 8. Stale .DS_Store files causing Git issues
-
-**Problem:**
-
-macOS `.DS_Store` files created untracked or modified files, blocking commits and pulls.
-
-**Fix:**
-
-Removed them and added to `.gitignore`:
-
-<pre class="overflow-visible!" data-start="4052" data-end="4186"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!"><span><span>find . -</span><span>name</span><span> ".DS_Store" -</span><span>delete</span><span>
-echo ".DS_Store" >> .gitignore
-git </span><span>add</span><span> .gitignore
-git </span><span>commit</span><span> -m "Remove and ignore .DS_Store"
+<pre class="overflow-visible!" data-start="4468" data-end="4538"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>git add .
+git commit -m </span><span>"Temp commit"</span><span>
+git pull --no-rebase
 </span></span></code></div></div></pre>
 
 ---
 
-## 9. Build stages rendering incorrectly (else tag error)
-
-**Problem:**
-
-Template raised:
-
-`Invalid block tag on line… 'else'.`
-
-**Cause:**
-
-Missing opening `{% if stages %}` or incorrect indentation.
+### **8. macOS .DS_Store files blocking commits**
 
 **Fix:**
 
-Rewrote the build stage block:
+<pre class="overflow-visible!" data-start="4608" data-end="4683"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>find . -name </span><span>".DS_Store"</span><span> -delete
+</span><span>echo</span><span></span><span>".DS_Store"</span><span> >> .gitignore</span></span></code></div></div></pre>
 
-<pre class="overflow-visible!" data-start="4446" data-end="4587"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-html"><span><span>{% if stages %}
-    {% for stage in stages %}
-        ...
-    {% endfor %}
-{% else %}
-    </span><span><p</span><span>>No build stages yet.</span><span></p</span><span>>
-{% endif %}
-</span></span></code></div></div></pre>
-
----
-
-## 10. Sidebar/header layout not loading on child templates
-
-**Problem:**
-
-Pages loaded without the navbar or layout.
-
-**Cause:**
-
-Forgot `{% extends "base.html" %}` at the top of child templates.
-
-**Fix:**
-
-Added `extends` and `block content`:
-
-<pre class="overflow-visible!" data-start="4848" data-end="4924"><div class="contain-inline-size rounded-2xl corner-superellipse/1.1 relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-html"><span><span>{% extends "base.html" %}
-{% block content %}
-...
-{% endblock %}</span></span></code></div></div></pre>
-
-
----
 
 ## Requirements
 
